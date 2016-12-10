@@ -460,38 +460,25 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 add_action("wp_enqueue_scripts", "my_scripts_enqueue", false);
 function my_scripts_enqueue()
 {
+        wp_deregister_script('jquery'); // remove jquery
+    wp_enqueue_script('jquery',  get_template_directory_uri(). '/js/lib/jquery-3.1.1.min.js', false, null, true);
     wp_enqueue_script('bootstrap_js', get_template_directory_uri(). '/js/lib/bootstrap.min.js');
     wp_enqueue_style('bootstrap_css', get_template_directory_uri(). '/css/bootstrap.min.css');
     if (is_page_template('template-acceuil.php'))
     {
+        wp_enqueue_script('map', get_template_directory_uri(). '/js/map.js');
+        wp_enqueue_script('google_map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB88Jaf-fuv6Sjnug-tnJOAUTEYs6JPnqE&signed_in=true&callback=initMap');
+        wp_enqueue_script('isotope', get_template_directory_uri(). '/js/lib/isotope.pkgd.min.js');
+        
+    }
+    if (is_page_template('template-portfolio.php'))
+    {
         wp_enqueue_script('isotope', get_template_directory_uri(). '/js/lib/isotope.pkgd.min.js');
     }
+
+    wp_enqueue_script('html5blankscripts'); // Enqueue it!
+
 }
 require get_template_directory() . '/inc/walkers/bootstrap_menu.php';
+require get_template_directory() . '/inc/cpt/voyage.php';
 require get_template_directory() . '/inc/cpt/musique.php';
-// require get_template_directory() . '/inc/mbx/socials.php';
-
-    // if is admin
-// if (!current_user_can( 'create_users',get_current_user_id())){
-    // twitter autoload
-//     if (isset($_REQUEST['oauth_verifier'], $_REQUEST['oauth_token']) && $_REQUEST['oauth_token'] == $_SESSION['oauth_token']) {
-//         // twitter
-
-
-//         $request_token = [];
-//         $request_token['oauth_token'] = $_SESSION['oauth_token'];
-//         $request_token['oauth_token_secret'] = $_SESSION['oauth_token_secret'];
-//         $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $request_token['oauth_token'], $request_token['oauth_token_secret']);
-//         $access_token = $connection->oauth("oauth/access_token", array("oauth_verifier" => $_REQUEST['oauth_verifier']));
-//         $_SESSION['access_token'] = $access_token;
-//         // redirect user back to index page
-//     }
-    
-//     require get_template_directory() . '/inc/custom_fields/twitter_acces.php';
-
-// // }
-
-// // posting to socials [twitter, facebook, instagram]
-
-// require get_template_directory() . '/inc/hooks/post_to_socials.php';
-// require get_template_directory() . '/inc/hooks/delete_to_socials.php';

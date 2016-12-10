@@ -2,7 +2,8 @@
 
 	<main role="main">
 	<!-- section -->
-	<section>
+	<div class="col-md-1"></div>
+	<section class="col-md-10">
 
 	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
@@ -59,9 +60,8 @@
 	<?php endif; ?>
 
 	</section>
+	<div class="col-md-1"></div>
 	<!-- /section -->
 	</main>
-
-<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

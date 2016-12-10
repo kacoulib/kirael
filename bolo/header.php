@@ -27,9 +27,17 @@
 
 		<!-- wrapper -->
 		<div class="wrapper">
-
+			<?php echo (is_home() || is_front_page())? '<div id="home_header_wrapper">' : '';?>
 			<!-- header -->
-			<header class="header clear" role="banner">
+			<div class="col-md-12" id='home'>
+				
+		            <a class="navbar-brand" href="<?php echo site_url(); ?>">
+						<img src="<?php bloginfo('template_directory'); ?>/img/kirael-logo.png" alt="kirael logo" class='logo'>
+		            </a>
+			</div>
+			<span class="clearfix"></span>
+			<div class="col-md-1"></div>
+			<header class="header col-md-10 no-padding clear" role="banner">
 	
 				<div class="container-fluid">
 			 		<nav class="navbar navbar-default">
@@ -40,10 +48,6 @@
 		              <span class="icon-bar"></span>
 		              <span class="icon-bar"></span>
 		            </button>
-		            <a class="navbar-brand" href="#">
-						<img src="<?php bloginfo('template_directory'); ?>/img/kirael-logo.png" alt="kirael logo" class='logo'>
-						<img src="<?php bloginfo('template_directory'); ?>/img/menu.png" alt="kirael logo" class='header_kirael'>
-		            </a>
 		          </div>
 
 		          <div id="navbar" class="navbar-collapse collapse">
@@ -56,6 +60,9 @@
 		        </div><!--/.container-fluid -->
 		      </nav>
 					<!-- /nav -->
-</div>
+				</div>
 			</header>
+			<div class="col-md-1"></div>
+			<div class="clearfix"></div>
 			<!-- /header -->
+			<?php echo (is_home() || is_front_page())? '</div>' : '';?>
